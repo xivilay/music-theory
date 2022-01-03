@@ -40,6 +40,8 @@ const next = (cycle) => {
     return cycle;
 };
 
+const BASE = 16;
+
 // { name: "Romanian Major", intervals: [1, 3, 2, 1, 2, 1, 2] }
 class Scale {
     constructor({ name, intervals, base, shift }) {
@@ -67,8 +69,8 @@ class Scale {
         return Scale.getSum(this.base);
     }
 
-    static toNumber = (intervals) => parseInt(intervals.join(''));
-    static fromNumber = (num) => num.toString().split('');
+    static toNumber = (intervals) => parseInt(intervals.map(a => a.toString(BASE)).join(''), BASE);
+    static fromNumber = (num) => num.toString(BASE).split('').map(a => parseInt(a, BASE));
     static fromString = (str) => str.split(',');
     static toString = (intervals) => intervals.join(',');
     static compare = (intervals1, intervals2) => Scale.toString(intervals1) == Scale.toString(intervals2);
