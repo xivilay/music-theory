@@ -1,4 +1,4 @@
-const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+export const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 export const notesPerOctave = notes.length;
 
 export const getNoteIndex = (noteNum) => noteNum % notesPerOctave;
@@ -14,4 +14,8 @@ export const getFullNoteName = (noteNum) => {
     return noteName + octave;
 };
 
-export const isBlackNote = (noteNum) => [1, 3, 6, 8, 10].includes(getNoteIndex(noteNum));
+export const blackNotes = notes.map((note, i) => note.includes("#") && i).filter(i => i !== false);
+export const whiteNotes = notes.map((note, i) => !note.includes("#") && i).filter(i => i !== false);
+
+export const isBlackNote = (noteNum) => blackNotes.includes(getNoteIndex(noteNum));
+export const isWhiteNote = (noteNum) => whiteNotes.includes(getNoteIndex(noteNum));
