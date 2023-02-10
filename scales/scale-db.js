@@ -6,6 +6,21 @@ const pentatonic = require('./pentatonic.json');
 
 const cache = {};
 
+const currentDB = {
+    5: pentatonic,
+    6: hexatonic,
+    7: heptatonic,
+};
+
+const addScaleToDb = (intervals, name) => {
+    const {shift, baseIndex, tones} = getScaleByIntervals(intervals);
+    const t = currentDB[tones];
+    if (!t) currentDB[tones] = {};
+    const b = currentDB[tones][baseIndex];
+    if (!b) currentDB[tones][baseIndex] = {}
+    currentDB[tones][baseIndex][shift] = name;
+}
+
 const getNamesList = (tones) => {
     const namesDB = getNamesDB(tones);
     return Object.keys(namesDB)
@@ -18,10 +33,9 @@ const getNamesList = (tones) => {
 };
 
 const getNamesDB = (tones) => {
-    if (tones === 5) return pentatonic;
-    if (tones === 6) return hexatonic;
-    if (tones === 7) return heptatonic;
-    return {};
+    const db = currentDB[tones];
+    if (!db) currentDB[tones] = {};
+    return currentDB[tones];
 };
 
 const findNameInDB = (tones, index, shift) => {
@@ -83,7 +97,7 @@ const getScaleByBase = (base, shift = 0) => {
 
     scale.baseIndex = index;
     scale.name = findNameInDB(tones, index, shift);
-    
+
     return scale;
 };
 
@@ -96,4 +110,5 @@ module.exports = {
     getScaleByName,
     getScaleInfoByName,
     getScalesCount,
+    addScaleToDb
 };
