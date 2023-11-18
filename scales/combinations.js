@@ -1,4 +1,4 @@
-const Scale = require('./scale');
+import Scale from './scale';
 
 const getNums = (sum, next) => {
     const min = 1;
@@ -36,5 +36,4 @@ const genScales = (tonics, temperament) => {
     }).reverse();
 }
 
-
-module.exports = genScales;
+export default genScales;

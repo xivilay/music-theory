@@ -1,6 +1,6 @@
-const Scale = require('./scale');
+import Scale from './scale';
 
-const getScaleTransform = (scale, base) => {
+export const getScaleTransform = (scale, base) => {
     if (scale instanceof Scale) scale = scale.intervals;
     if (base instanceof Scale) base = base.intervals;
 
@@ -33,7 +33,7 @@ const getScaleTransform = (scale, base) => {
 // octave - octave number
 // tonics - number of tonics in scale
 // shiftMap [0, -1, -1, 0, -1, -1, -1];
-const getNotesMapping = (octave, tonics, scaleTransform = []) => {
+export const getNotesMapping = (octave, tonics, scaleTransform = []) => {
     const whites = [0, 2, 4, 5, 7, 9, 11];
     const keysCount = 12;
     return [...Array(128).keys()]
@@ -55,7 +55,7 @@ const getNotesMapping = (octave, tonics, scaleTransform = []) => {
         }, {});
 };
 
-const getNotesMappingFromIntervals = (octave, intervals) => {
+export const getNotesMappingFromIntervals = (octave, intervals) => {
     const notesInOctave = 12;
     const baseNote = octave * notesInOctave;
     const minNote = 0;
@@ -106,7 +106,7 @@ const getNotesMappingFromIntervals = (octave, intervals) => {
     return map;
 };
 
-const makeGetTransformedNotes = (scale) => (noteIndex) => {
+export const makeGetTransformedNotes = (scale) => (noteIndex) => {
     const scaleTransformation = getScaleTransform(scale);
     const getTransformedNote = (noteIndex) => {
         const noteInOctaveIndex = noteIndex % scaleTransformation.length;
@@ -114,11 +114,4 @@ const makeGetTransformedNotes = (scale) => (noteIndex) => {
         if (noteTransformation === null) return null;
         return noteIndex + noteTransformation;
     };
-};
-
-module.exports = {
-    getScaleTransform,
-    getNotesMapping,
-    getNotesMappingFromIntervals,
-    makeGetTransformedNotes,
 };

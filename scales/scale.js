@@ -80,4 +80,4 @@ class Scale {
     getIntervalByIndex = (i) => getIntervalByIndex(this.generateIntervals(), i);
 }
 
-module.exports = Scale;
+export default Scale;

@@ -1,8 +1,8 @@
-const genScales = require('./combinations');
-const Scale = require('./scale');
-const heptatonic = require('./heptatonic.json');
-const hexatonic = require('./hexatonic.json');
-const pentatonic = require('./pentatonic.json');
+import genScales from './combinations';
+import Scale from './scale';
+import heptatonic from './heptatonic.json';
+import hexatonic from './hexatonic.json';
+import pentatonic from './pentatonic.json';
 
 const cache = {};
 
@@ -12,7 +12,7 @@ const currentDB = {
     7: heptatonic,
 };
 
-const addScaleToDb = (intervals, name) => {
+export const addScaleToDb = (intervals, name) => {
     const {shift, baseIndex, tones} = getScaleByIntervals(intervals);
     const t = currentDB[tones];
     if (!t) currentDB[tones] = {};
@@ -21,7 +21,7 @@ const addScaleToDb = (intervals, name) => {
     currentDB[tones][baseIndex][shift] = name;
 }
 
-const getNamesList = (tones) => {
+export const getNamesList = (tones) => {
     const namesDB = getNamesDB(tones);
     return Object.keys(namesDB)
         .reduce((acc, val) => {
@@ -43,9 +43,9 @@ const findNameInDB = (tones, index, shift) => {
     return namesDB?.[index]?.[shift];
 }
 
-const getScalesCount = (tones, length) => getScalesFromCache(tones, length).length;
+export const getScalesCount = (tones, length) => getScalesFromCache(tones, length).length;
 
-const getModesCount = (tones, index, length) => getScale(tones, index, 0, length).generateIntervals().length;
+export const getModesCount = (tones, index, length) => getScale(tones, index, 0, length).generateIntervals().length;
 
 const getScalesFromCache = (tones, length = 12) => {
     if (!cache[length]) cache[length] = {};
@@ -54,14 +54,14 @@ const getScalesFromCache = (tones, length = 12) => {
     return cache[length][tones];
 };
 
-const getScale = (tones, index, shift, length) => {
+export const getScale = (tones, index, shift, length) => {
     const base = getScalesFromCache(tones, length)[index];
     if (!base) return;
 
     return getScaleByBase(base, shift);
 };
 
-const getScaleInfoByName = (name, tones) => {
+export const getScaleInfoByName = (name, tones) => {
     const namesDB = getNamesDB(tones);
     for (const index in namesDB) {
         const modes = namesDB[index];
@@ -71,13 +71,13 @@ const getScaleInfoByName = (name, tones) => {
     }
 };
 
-const getScaleByName = (name, tones = 7) => {
+export const getScaleByName = (name, tones = 7) => {
     const info = getScaleInfoByName(name, tones);
     if (!info) return;
     return getScale(...info, 12);
 };
 
-const getScaleByIntervals = (scale) => {
+export const getScaleByIntervals = (scale) => {
     if (!(scale instanceof Scale)) scale = new Scale({ intervals: scale });
     const { base, tones, shift, length } = scale;
     const scales = getScalesFromCache(tones, length);
@@ -89,7 +89,7 @@ const getScaleByIntervals = (scale) => {
     return scale;
 };
 
-const getScaleByBase = (base, shift = 0) => {
+export const getScaleByBase = (base, shift = 0) => {
     const scale = new Scale({ base, shift });
     const { tones, length } = scale;
     const scales = getScalesFromCache(tones, length);
@@ -99,16 +99,4 @@ const getScaleByBase = (base, shift = 0) => {
     scale.name = findNameInDB(tones, index, shift);
 
     return scale;
-};
-
-module.exports = {
-    getModesCount,
-    getScaleByBase,
-    getScaleByIntervals,
-    getNamesList,
-    getScale,
-    getScaleByName,
-    getScaleInfoByName,
-    getScalesCount,
-    addScaleToDb
 };
