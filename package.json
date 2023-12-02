@@ -1,0 +1,24 @@
+{
+  "name": "music-theory",
+  "version": "0.0.1",
+  "description": "Collection of utility functions helping to work with music theory elements, such as chords or scales.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xivilay/music-theory.git"
+  },
+  "keywords": [
+    "music",
+    "theory",
+    "scale",
+    "chord",
+    "utils"
+  ],
+  "author": "xivilay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xivilay/music-theory/issues"
+  },
+  "homepage": "https://github.com/xivilay/music-theory#readme"
+}
