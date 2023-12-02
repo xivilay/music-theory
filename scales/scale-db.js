@@ -1,12 +1,7 @@
 import genScales from './combinations.js';
 import Scale from './scale.js';
 
-import { createRequire } from 'node:module';
-const require = createRequire(import.meta.url);
-
-const heptatonic = require('./heptatonic.json');
-const hexatonic = require('./hexatonic.json');
-const pentatonic = require('./pentatonic.json');
+import { heptatonic, hexatonic, pentatonic } from './known-scales.js';
 
 const cache = {};
 
@@ -17,13 +12,13 @@ const currentDB = {
 };
 
 export const addScaleToDb = (intervals, name) => {
-    const {shift, baseIndex, tones} = getScaleByIntervals(intervals);
+    const { shift, baseIndex, tones } = getScaleByIntervals(intervals);
     const t = currentDB[tones];
     if (!t) currentDB[tones] = {};
     const b = currentDB[tones][baseIndex];
-    if (!b) currentDB[tones][baseIndex] = {}
+    if (!b) currentDB[tones][baseIndex] = {};
     currentDB[tones][baseIndex][shift] = name;
-}
+};
 
 export const getNamesList = (tones) => {
     const namesDB = getNamesDB(tones);
@@ -45,7 +40,7 @@ const getNamesDB = (tones) => {
 const findNameInDB = (tones, index, shift) => {
     const namesDB = getNamesDB(tones);
     return namesDB?.[index]?.[shift];
-}
+};
 
 export const getScalesCount = (tones, length) => getScalesFromCache(tones, length).length;
 
