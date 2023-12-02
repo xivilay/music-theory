@@ -1,4 +1,4 @@
-import Scale from './scale';
+import Scale from './scale.js';
 
 export const getScaleTransform = (scale, base) => {
     if (scale instanceof Scale) scale = scale.intervals;

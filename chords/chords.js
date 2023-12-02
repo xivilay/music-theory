@@ -1,5 +1,5 @@
-import chordMapping from './chord-mapping';
-import { getNoteIndex, getNoteName, notesPerOctave } from './utils';
+import chordMapping from './chord-mapping.js';
+import { getNoteIndex, getNoteName, notesPerOctave } from './utils.js';
 
 const getIntervals = (noteNums) =>
     [...new Set(noteNums.map(getNoteIndex).sort((a, b) => a - b))].map((val, i, arr) => {

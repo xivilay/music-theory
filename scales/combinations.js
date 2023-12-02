@@ -1,4 +1,4 @@
-import Scale from './scale';
+import Scale from './scale.js';
 
 const getNums = (sum, next) => {
     const min = 1;

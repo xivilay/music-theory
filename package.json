@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Collection of utility functions helping to work with music theory elements, such as chords or scales.",
   "main": "index.js",
+  "type": "module",
   "scripts": {},
   "repository": {
     "type": "git",

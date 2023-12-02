@@ -1,8 +1,12 @@
-import genScales from './combinations';
-import Scale from './scale';
-import heptatonic from './heptatonic.json';
-import hexatonic from './hexatonic.json';
-import pentatonic from './pentatonic.json';
+import genScales from './combinations.js';
+import Scale from './scale.js';
+
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+
+const heptatonic = require('./heptatonic.json');
+const hexatonic = require('./hexatonic.json');
+const pentatonic = require('./pentatonic.json');
 
 const cache = {};
 
