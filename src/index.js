@@ -14,6 +14,7 @@ export {
 
 export { default as Scale } from './scales/scale.js';
 export {
+    addScaleToDb,
     getScaleByBase,
     getScaleByIntervals,
     getScaleByName,
