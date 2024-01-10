@@ -27,13 +27,16 @@ const genPermutations = (num, sum) => {
 
 const genScales = (tonics, temperament) => {
     const set = new Set();
-    return genPermutations(tonics, temperament).filter(intervals => {
-        const scale = new Scale({intervals});
-        const uniq = Scale.toString(scale.base);
-        if (set.has(uniq)) return false;
-        set.add(uniq);
-        return true;
-    }).reverse();
-}
+    return genPermutations(tonics, temperament)
+        .filter((intervals) => {
+            const scale = new Scale({ intervals });
+            const uniq = Scale.toString(scale.base);
+            if (set.has(uniq)) return false;
+            set.add(uniq);
+            return true;
+        })
+        .reverse()
+        .sort((a, b) => Math.max(...a) - Math.max(...b));
+};
 
 export default genScales;
