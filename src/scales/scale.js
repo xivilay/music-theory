@@ -69,8 +69,8 @@ class Scale {
         return Scale.getSum(this.base);
     }
 
-    static toNumber = (intervals) => parseInt(intervals.map(a => a.toString(BASE)).join(''), BASE);
-    static fromNumber = (num) => num.toString(BASE).split('').map(a => parseInt(a, BASE));
+    static toNumber = (intervals) => parseInt([Math.max(...intervals), ...intervals].map(a => a.toString(BASE)).join(''), BASE);
+    static fromNumber = (num) => num.toString(BASE).split('').map(a => parseInt(a, BASE)).slice(1);
     static fromString = (str) => str.split(',');
     static toString = (intervals) => intervals.join(',');
     static compare = (intervals1, intervals2) => Scale.toString(intervals1) == Scale.toString(intervals2);

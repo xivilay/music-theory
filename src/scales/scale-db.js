@@ -1,14 +1,23 @@
 import genScales from './combinations.js';
 import Scale from './scale.js';
 
-import { heptatonic, hexatonic, pentatonic } from './known-scales.js';
+import { scales } from './known-scales.js';
 
 const cache = {};
 
-const currentDB = {
-    5: pentatonic,
-    6: hexatonic,
-    7: heptatonic,
+const currentDB = {};
+
+export const prebuildCache = () => {
+    const keysCount = 12;
+    for (let i = 1; i <= keysCount; i++) {
+        getScalesFromCache(i, keysCount);
+    }
+
+    Object.entries(scales).forEach(([k, v]) => {
+        addScaleToDb(k.split(' '), v);
+    });
+
+    return currentDB;
 };
 
 export const addScaleToDb = (intervals, name) => {

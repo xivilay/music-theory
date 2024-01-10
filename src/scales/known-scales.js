@@ -1,132 +1,100 @@
-export const heptatonic = {
-    0: {
-        0: 'Locrian',
-        1: 'Major',
-        2: 'Dorian',
-        3: 'Phrygian',
-        4: 'Lydian',
-        5: 'Mixolydian',
-        6: 'Minor',
-    },
-    1: {
-        1: 'Lydian Diminished',
-        5: 'Harmonic Major',
-        6: 'Blues',
-    },
-    2: {
-        0: 'Altered Dominant',
-        1: 'Melodic Minor',
-        3: 'Lydian Augmented',
-        4: 'Lydian Dominant',
-        5: 'Melodic Major',
-        6: 'Half Diminished',
-    },
-    3: {
-        0: 'Ultralocrian',
-        1: 'Harmonic Minor',
-        3: 'Ionian Augmented',
-        4: 'Romanian Minor',
-        5: 'Phrygian Dominant',
-    },
-    4: {
-        4: 'Romanian Major',
-    },
-    5: {
-        6: 'Hungarian Major',
-    },
-    7: {
-        4: 'Blues Modified',
-    },
-    8: {
-        4: 'Blues Phrygian',
-    },
-    9: {
-        6: 'Hungarian Minor',
-    },
-    11: {
-        1: 'Double Harmonic',
-        3: 'Ultraphrygian',
-    },
-    12: {
-        5: 'Blues Leading Tone',
-    },
-    17: {
-        0: 'Superlocrian',
-        1: 'Neapolitan Major',
-        2: 'Leading Whole-Tone',
-        5: 'Major Locrian',
-    },
-    18: {
-        1: 'Neapolitan Minor',
-        3: 'Mixolydian Augmented',
-        5: 'Locrian Dominant',
-    },
-    20: {
-        6: "Rock'n'Roll",
-    },
-    36: {
-        2: 'Enigmatic',
-    },
-    42: {
-        2: 'Enigmatic Minor',
-    },
-    55: {
-        6: 'Blues Mixed',
-    },
-};
+export const scales = {
+    // ----- 5 ------ //
+    "2 2 3 2 3": 'Major',
+    "2 3 2 3 2": 'Egyptian',
+    "3 2 3 2 2": 'Blues Minor',
+    "2 3 2 2 3": 'Blues Major',
+    "3 2 2 3 2": 'Minor',
 
-export const hexatonic = {
-    0: {
-        0: 'Whole Tone',
-    },
-    2: {
-        0: 'Tritone Scale',
-    },
-    4: {
-        1: 'Augmented',
-    },
-    9: {
-        1: 'Lydian',
-        2: 'Mixolydian',
-        3: 'Phrygian',
-        4: 'Major',
-        5: 'Minor',
-    },
-    12: {
-        2: 'Prometheus',
-    },
-    15: {
-        0: 'Double Phrygian',
-    },
-    19: {
-        5: 'Pyramid Hexatonic',
-    },
-    37: {
-        4: 'Blues',
-    },
-};
+    "2 2 3 3 2": 'Dominant',
 
-export const pentatonic = {
-    0: {
-        0: 'Major',
-        1: 'Egyptian',
-        2: 'Blues Minor',
-        3: 'Blues Major',
-        4: 'Minor',
-    },
-    1: {
-        1: 'Dominant',
-    },
-    5: {
-        3: 'Locrian',
-        4: 'Dorian',
-    },
-    7: {
-        3: 'Lydian',
-        4: 'Aeolian',
-    },
-    23: {
-        0: 'Phrygian',
-        4: 'Ionian',
-    },
-};
+    "3 2 1 4 2": 'Locrian',
+    "2 1 4 2 3": 'Dorian',
+
+    "4 2 1 4 1": 'Lydian',
+    "2 1 4 1 4": 'Aeolian',
+
+    "1 2 4 1 4": 'Phrygian',
+    "4 1 2 4 1": 'Ionian',
+
+    // ----- 6 ------ //
+    "2 2 2 2 2 2": 'Whole Tone',
+
+    "1 3 2 1 3 2": 'Tritone Scale',
+
+    "3 1 3 1 3 1": 'Augmented',
+
+    "2 2 3 2 2 1": 'Lydian',
+    "2 3 2 2 1 2": 'Mixolydian',
+    "3 2 2 1 2 2": 'Phrygian',
+    "2 2 1 2 2 3": 'Major',
+    "2 1 2 2 3 2": 'Minor',
+
+    "2 2 2 3 1 2": 'Prometheus',
+
+    "1 2 2 1 3 3": 'Double Phrygian',
+
+    "2 1 2 1 3 3": 'Pyramid Hexatonic',
+    "3 2 1 1 3 2": 'Blues',
+
+    // ----- 7 ------ //
+    "1 2 2 1 2 2 2": 'Locrian',
+    "2 2 1 2 2 2 1": 'Major',
+    "2 1 2 2 2 1 2": 'Dorian',
+    "1 2 2 2 1 2 2": 'Phrygian',
+    "2 2 2 1 2 2 1": 'Lydian',
+    "2 2 1 2 2 1 2": 'Mixolydian',
+    "2 1 2 2 1 2 2": 'Minor',
+
+    "2 1 3 1 2 2 1": 'Lydian Diminished',
+    "2 2 1 2 1 3 1": 'Harmonic Major',
+    "2 1 2 1 3 1 2": 'Blues',
+
+    "1 2 1 2 2 2 2": 'Altered Dominant',
+    "2 1 2 2 2 2 1": 'Melodic Minor',
+    "2 2 2 2 1 2 1": 'Lydian Augmented',
+    "2 2 2 1 2 1 2": 'Lydian Dominant',
+    "2 2 1 2 1 2 2": 'Melodic Major',
+    "2 1 2 1 2 2 2": 'Half Diminished',
+
+    "1 2 1 2 2 1 3": 'Ultralocrian',
+    "2 1 2 2 1 3 1": 'Harmonic Minor',
+    "2 2 1 3 1 2 1": 'Ionian Augmented',
+    "2 1 3 1 2 1 2": 'Romanian Minor',
+    "1 3 1 2 1 2 2": 'Phrygian Dominant',
+
+    "1 3 2 1 2 1 2": 'Romanian Major',
+
+    "3 1 2 1 2 1 2": 'Hungarian Major',
+
+    "2 1 2 1 1 3 2": 'Blues Modified',
+
+    "1 2 2 1 1 3 2": 'Blues Phrygian',
+
+    "2 1 1 3 1 3 1": 'Hungarian Minor',
+
+    "1 3 1 2 1 3 1": 'Double Harmonic',
+    "1 2 1 3 1 1 3": 'Ultraphrygian',
+
+    "3 2 1 1 3 1 1": 'Blues Leading Tone',
+
+    "1 1 2 2 2 2 2": 'Superlocrian',
+    "1 2 2 2 2 2 1": 'Neapolitan Major',
+    "2 2 2 2 2 1 1": 'Leading Whole-Tone',
+    "2 2 1 1 2 2 2": 'Major Locrian',
+
+    "1 2 2 2 1 3 1": 'Neapolitan Minor',
+    "2 2 1 3 1 1 2": 'Mixolydian Augmented',
+    "1 3 1 1 2 2 2": 'Locrian Dominant',
+
+    "3 1 1 2 2 1 2": "Rock'n'Roll",
+
+    "1 3 2 2 2 1 1": 'Enigmatic',
+
+    "1 2 3 2 2 1 1": 'Enigmatic Minor',
+
+    "3 1 1 1 1 3 2": 'Blues Mixed',
+
+    // ----- 8 ------ //
+    "2 1 2 2 1 2 1 1": "Utility Minor"
+}

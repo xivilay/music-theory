@@ -23,6 +23,7 @@ export {
     getScalesCount,
     getModesCount,
     getNamesList,
+    prebuildCache
 } from './scales/scale-db.js';
 export {
     getScaleTransform,

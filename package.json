@@ -5,7 +5,9 @@
     "main": "./dist/index.js",
     "exports": "./dist/index.js",
     "type": "module",
-    "scripts": {},
+    "scripts": {
+        "build": "webpack"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/xivilay/music-theory.git"
