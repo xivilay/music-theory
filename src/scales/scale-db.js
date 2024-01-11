@@ -3,9 +3,10 @@ import Scale from './scale.js';
 
 import { scales } from './known-scales.js';
 
-const cache = {};
+import cache from 'cache';
+import names from 'names';
 
-const currentDB = {};
+const db = { names, cache };
 
 export const prebuildCache = () => {
     const keysCount = 12;
@@ -17,16 +18,16 @@ export const prebuildCache = () => {
         addScaleToDb(k.split(' '), v);
     });
 
-    return currentDB;
+    return db;
 };
 
 export const addScaleToDb = (intervals, name) => {
     const { shift, baseIndex, tones } = getScaleByIntervals(intervals);
-    const t = currentDB[tones];
-    if (!t) currentDB[tones] = {};
-    const b = currentDB[tones][baseIndex];
-    if (!b) currentDB[tones][baseIndex] = {};
-    currentDB[tones][baseIndex][shift] = name;
+    const t = db.names[tones];
+    if (!t) db.names[tones] = {};
+    const b = db.names[tones][baseIndex];
+    if (!b) db.names[tones][baseIndex] = {};
+    db.names[tones][baseIndex][shift] = name;
 };
 
 export const getNamesList = (tones) => {
@@ -41,9 +42,8 @@ export const getNamesList = (tones) => {
 };
 
 const getNamesDB = (tones) => {
-    const db = currentDB[tones];
-    if (!db) currentDB[tones] = {};
-    return currentDB[tones];
+    if (!db.names[tones]) db.names[tones] = {};
+    return db.names[tones];
 };
 
 const findNameInDB = (tones, index, shift) => {
@@ -56,10 +56,10 @@ export const getScalesCount = (tones, length) => getScalesFromCache(tones, lengt
 export const getModesCount = (tones, index, length) => getScale(tones, index, 0, length).generateIntervals().length;
 
 const getScalesFromCache = (tones, length = 12) => {
-    if (!cache[length]) cache[length] = {};
-    if (!cache[length][tones]) cache[length][tones] = genScales(tones, length);
+    if (!db.cache[length]) db.cache[length] = {};
+    if (!db.cache[length][tones]) db.cache[length][tones] = genScales(tones, length);
 
-    return cache[length][tones];
+    return db.cache[length][tones];
 };
 
 export const getScale = (tones, index, shift, length) => {

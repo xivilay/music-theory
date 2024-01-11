@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = {
     entry: './src/index.js',
     mode: 'production',
-    target: ['web', 'es5'],
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
@@ -11,6 +10,11 @@ module.exports = {
             type: 'module',
         },
     },
+    externals: {
+        cache: './cache.js',
+        names: './names.js',
+    },
+    externalsType: 'module',
     module: {
         rules: [
             {
