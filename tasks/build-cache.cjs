@@ -5,8 +5,8 @@ const exportAssignment = 'module.exports =';
 fs.writeFileSync('dist/names.cjs', `${exportAssignment} {}`);
 fs.writeFileSync('dist/cache.cjs', `${exportAssignment} {}`);
 
-import('../dist/index.js').then(({ prebuildCache }) => {
-    const { names, cache } = prebuildCache();
+import('../dist/index.js').then(({default: musicTheory}) => {
+    const { names, cache } = musicTheory.prebuildCache();
 
     fs.writeFileSync('dist/names.cjs', `${exportAssignment} ${JSON.stringify(names)}`);
     fs.writeFileSync('dist/cache.cjs', `${exportAssignment} ${JSON.stringify(cache)}`);

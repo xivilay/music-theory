@@ -8,14 +8,14 @@ module.exports = {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
         library: {
-            type: 'module',
+            type: 'commonjs',
         },
     },
     externals: {
         cache: './cache.cjs',
         names: './names.cjs',
     },
-    externalsType: 'node-commonjs',
+    externalsType: 'commonjs',
     module: {
         rules: [
             {
@@ -34,8 +34,5 @@ module.exports = {
                 },
             },
         ],
-    },
-    experiments: {
-        outputModule: true,
-    },
+    }
 };

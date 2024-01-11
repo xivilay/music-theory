@@ -1,10 +1,8 @@
 {
     "name": "@xivilay/music-theory",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "Collection of utility functions helping to work with music theory elements, such as chords or scales.",
     "main": "./dist/index.js",
-    "exports": "./dist/index.js",
-    "type": "module",
     "scripts": {
         "build": "webpack",
         "postbuild": "node ./tasks/build-cache.cjs"
