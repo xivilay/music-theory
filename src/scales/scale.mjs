@@ -1,5 +1,5 @@
 // [1, 3, 2, 1, 2, 1, 2] => [1, 2, 1, 2, 1, 3, 2]
-const getBaseInterval = (intervals) =>
+export const getBaseInterval = (intervals) =>
     Scale.fromNumber(
         intervals.reduce(
             (acc) => {
@@ -14,7 +14,7 @@ const getBaseInterval = (intervals) =>
     );
 
 // generates matrix of permutations
-const generateIntervals = (intervals) => {
+export const generateIntervals = (intervals) => {
     const set = new Set();
     return intervals
         .reduce(
@@ -74,7 +74,7 @@ class Scale {
     static fromString = (str) => str.split(',');
     static toString = (intervals) => intervals.join(',');
     static compare = (intervals1, intervals2) => Scale.toString(intervals1) == Scale.toString(intervals2);
-    static getSum = (scale) => scale.reduce((acc, val) => parseInt(val) + acc, 0);
+    static getSum = (intervals) => intervals.reduce((acc, val) => parseInt(val) + acc, 0);
     getShift = (intervals) => this.generateIntervals().findIndex((cycle) => Scale.compare(cycle, intervals));
     generateIntervals = () => generateIntervals(this.base);
     getIntervalByIndex = (i) => getIntervalByIndex(this.generateIntervals(), i);
