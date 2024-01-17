@@ -1,5 +1,7 @@
 import Scale from './scale.mjs';
+import { isWhiteNote } from '../chords/utils.mjs';
 
+// deprecated
 export const getScaleTransform = (scale, base) => {
     if (scale instanceof Scale) scale = scale.intervals;
     if (base instanceof Scale) base = base.intervals;
@@ -30,6 +32,7 @@ export const getScaleTransform = (scale, base) => {
     // TODO add cases when scale tonics > base
 };
 
+// deprecated - use getNotesMappingFromIntervals() instead
 // octave - octave number
 // tonics - number of tonics in scale
 // shiftMap [0, -1, -1, 0, -1, -1, -1];
@@ -55,7 +58,7 @@ export const getNotesMapping = (octave, tonics, scaleTransform = []) => {
         }, {});
 };
 
-export const getNotesMappingFromIntervals = (octave, intervals) => {
+export const getNotesMappingFromIntervals = (octave, intervals, isTargetNoteIncluded = isWhiteNote) => {
     const notesInOctave = 12;
     const baseNote = octave * notesInOctave;
     const minNote = 0;
@@ -66,14 +69,13 @@ export const getNotesMappingFromIntervals = (octave, intervals) => {
         intervals.push(notesInOctave - intervalSum);
     }
     const tones = intervals.length;
-    const isWhiteNote = (note) => [0, 2, 4, 5, 7, 9, 11].includes(note % notesInOctave);
     map[baseNote] = baseNote;
 
     const fillMapDown = () => {
         let intervalIndex = tones - 1;
         let prevNote = baseNote;
         for (let i = baseNote - 1; i >= minNote; i--) {
-            if (isWhiteNote(i)) {
+            if (isTargetNoteIncluded(i)) {
                 const shift = intervals[intervalIndex];
                 const mappedValue = prevNote - shift;
                 if (mappedValue < minNote) {
@@ -89,7 +91,7 @@ export const getNotesMappingFromIntervals = (octave, intervals) => {
         let intervalIndex = 0;
         let nextNote = baseNote;
         for (let i = baseNote + 1; i <= maxNote; i++) {
-            if (isWhiteNote(i)) {
+            if (isTargetNoteIncluded(i)) {
                 const shift = intervals[intervalIndex];
                 const mappedValue = nextNote + shift;
                 if (mappedValue > maxNote) {
@@ -106,6 +108,7 @@ export const getNotesMappingFromIntervals = (octave, intervals) => {
     return map;
 };
 
+// deprecated
 export const makeGetTransformedNotes = (scale) => (noteIndex) => {
     const scaleTransformation = getScaleTransform(scale);
     const getTransformedNote = (noteIndex) => {
