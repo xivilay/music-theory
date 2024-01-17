@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index.mjs',
     mode: 'production',
     target: ['web', 'es5'],
     output: {
@@ -19,7 +19,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(mjs)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 options: {

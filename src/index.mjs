@@ -1,5 +1,5 @@
-export { default as chordMapping } from './chords/chord-mapping.js';
-export { default as detectChords } from './chords/chords.js';
+export { default as chordMapping } from './chords/chord-mapping.mjs';
+export { default as detectChords } from './chords/chords.mjs';
 export {
     notes,
     notesPerOctave,
@@ -10,9 +10,9 @@ export {
     getFullNoteName,
     getNoteIndex,
     getNoteName,
-} from './chords/utils.js';
+} from './chords/utils.mjs';
 
-export { default as Scale } from './scales/scale.js';
+export { default as Scale } from './scales/scale.mjs';
 export {
     addScaleToDb,
     getScaleByBase,
@@ -24,11 +24,11 @@ export {
     getModesCount,
     getNamesList,
     prebuildCache
-} from './scales/scale-db.js';
+} from './scales/scale-db.mjs';
 export {
     getScaleTransform,
     getNotesMapping,
     getNotesMappingFromIntervals,
     makeGetTransformedNotes,
-} from './scales/remap.js';
-export { default as generateScales } from './scales/combinations.js';
+} from './scales/remap.mjs';
+export { default as generateScales } from './scales/combinations.mjs';

@@ -1,7 +1,7 @@
-import genScales from './combinations.js';
-import Scale from './scale.js';
+import genScales from './combinations.mjs';
+import Scale from './scale.mjs';
 
-import { scales } from './known-scales.js';
+import { scales } from './known-scales.mjs';
 
 import cache from 'cache';
 import names from 'names';
