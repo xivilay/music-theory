@@ -1,13 +1,13 @@
 import { isWhiteNote, notesPerOctave } from '../chords/utils.mjs';
 
-export const getNotesMappingFromIntervals = (octave, intervals, isTargetNoteIncluded = isWhiteNote) => {
-    const baseNote = octave * notesPerOctave;
+export const getNotesMappingFromIntervals = (octave, intervals, isTargetNoteIncluded = isWhiteNote, octaveSize = notesPerOctave) => {
+    const baseNote = octave * octaveSize;
     const minNote = 0;
     const maxNote = 127;
     const map = {};
     const intervalSum = intervals.reduce((sum, val) => sum + val, 0);
-    if (intervalSum < notesPerOctave) {
-        intervals.push(notesPerOctave - intervalSum);
+    if (intervalSum < octaveSize) {
+        intervals.push(octaveSize - intervalSum);
     }
     const tones = intervals.length;
     map[baseNote] = baseNote;
