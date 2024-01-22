@@ -10,10 +10,11 @@ export const getNotesMappingFromIntervals = (octave, intervals, isTargetNoteIncl
         intervals.push(octaveSize - intervalSum);
     }
     const tones = intervals.length;
+    const lastIntervalIndex = tones - 1;
     map[baseNote] = baseNote;
 
     const fillMapDown = () => {
-        let intervalIndex = tones - 1;
+        let intervalIndex = lastIntervalIndex;
         let prevNote = baseNote;
         for (let i = baseNote - 1; i >= minNote; i--) {
             if (isTargetNoteIncluded(i)) {
@@ -24,7 +25,7 @@ export const getNotesMappingFromIntervals = (octave, intervals, isTargetNoteIncl
                 }
                 map[i] = mappedValue;
                 prevNote = mappedValue;
-                intervalIndex = intervalIndex - 1 < 0 ? tones - 1 : intervalIndex - 1;
+                intervalIndex = intervalIndex <= 0 ? lastIntervalIndex: intervalIndex - 1;
             }
         }
     };
@@ -40,7 +41,7 @@ export const getNotesMappingFromIntervals = (octave, intervals, isTargetNoteIncl
                 }
                 map[i] = mappedValue;
                 nextNote = mappedValue;
-                intervalIndex = intervalIndex + 1 > tones - 1 ? 0 : intervalIndex + 1;
+                intervalIndex = intervalIndex >= lastIntervalIndex ? 0 : intervalIndex + 1;
             }
         }
     };
