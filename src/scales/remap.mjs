@@ -20,9 +20,7 @@ export const getNotesMappingFromIntervals = (octave, intervals, isTargetNoteIncl
             if (isTargetNoteIncluded(i)) {
                 const shift = intervals[intervalIndex];
                 const mappedValue = prevNote - shift;
-                if (mappedValue < minNote) {
-                    break;
-                }
+                if (mappedValue < minNote) break;
                 map[i] = mappedValue;
                 prevNote = mappedValue;
                 intervalIndex = intervalIndex <= 0 ? lastIntervalIndex: intervalIndex - 1;
@@ -36,9 +34,7 @@ export const getNotesMappingFromIntervals = (octave, intervals, isTargetNoteIncl
             if (isTargetNoteIncluded(i)) {
                 const shift = intervals[intervalIndex];
                 const mappedValue = nextNote + shift;
-                if (mappedValue > maxNote) {
-                    break;
-                }
+                if (mappedValue > maxNote) break;
                 map[i] = mappedValue;
                 nextNote = mappedValue;
                 intervalIndex = intervalIndex >= lastIntervalIndex ? 0 : intervalIndex + 1;
