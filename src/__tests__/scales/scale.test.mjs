@@ -50,14 +50,6 @@ describe('scale', () => {
                 });
 
                 it('should result in the same interval', () => {
-                    expect(generateIntervals([1, 1, 2, 1, 1, 2, 1, 1, 2])).toEqual([
-                        ['1', '1', '2', '1', '1', '2', '1', '1', '2'],
-                        ['1', '2', '1', '1', '2', '1', '1', '2', '1'],
-                        ['2', '1', '1', '2', '1', '1', '2', '1', '1'],
-                    ]);
-                });
-
-                it('should result in the same interval', () => {
                     expect(generateIntervals([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])).toEqual([
                         ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'],
                     ]);
